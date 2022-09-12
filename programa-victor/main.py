@@ -1,11 +1,12 @@
 from stack import Stack
 from vista import Vista
+import re
+import logging
 
-
+#Se crea un archivo que almacena la info de logging
+logging.basicConfig(filename='infoLogging.log', filemode='w', level=logging.DEBUG, format='%(asctime)s %(message)s' )
 #Se crea una pila vacía
 s = Stack()
-#print(s.is_empty())
-
 ###### Ciclo principal del programa ######
 salir = False
 v = Vista()
@@ -41,19 +42,49 @@ while not salir:
 
     elif(op=="6"):
         if(not s.is_empty()):
+            # Si el input ingresado no es un número
+            # el programa lo indica y pide una nueva entrada
+            s.printStack()
             print("Ingresa la posición del texto a imprimir")
             print("Nota que la posición parte desde 0")
-            i = input()
-            s.printText(int(i))
+            entradaInvalida = True
+            while(entradaInvalida):
+                i = input()
+                if re.search('^[0-9]+$',i):
+                    i = int(i)
+                    if(i>=0 and i < s.stackSize()):
+                        s.textInPosition(i)
+                        entradaInvalida = False
+                    else:
+                        print("Debes ingresar un número válido!")
+                else:
+                    print("Debes ingresar un número!")
+                
 
     elif(op=="7"):
-        s.printStack()
         if(not s.is_empty()):
-            print("Ingresa la posición del primer texto")
-            i = input()
-            print("Ingresa la posición del segundo texto")
-            j = input()
-            s.compareSizes(i,j)
+            s.printStack()
+            print("Ingresa la posición de los textos a comparar")
+            print("Nota que la posición parte desde 0")
+            entradaInvalida = True
+            while(entradaInvalida):
+                print("Ingresa la posición del primer texto")
+                i = input()
+                print("Ingresa la posición del segundo texto")
+                j = input()
+                if re.search('^[0-9]+$',i) and re.search('^[0-9]+$',j):
+                    i = int(i)
+                    j = int(j)
+    
+                    if((i>=0 and i < s.stackSize()) and (j>=0 and j < s.stackSize())):
+                        delta = s.compareSizes(i,j)
+                        entradaInvalida = False
+                        print(type(s.textInPosition(i)))
+                        print("La palabra <<"+s.textInPosition(i) + ">> se diferencia de <<"+ s.textInPosition(j)+">> en " + str(delta) + " caracteres\n")
+                    else:
+                        print("Debes ingresar un número válido!")
+                else:
+                    print("Debes ingresar un números!")
             
     elif(op=="8"):
         print("Presione cualquier tecla para salir")
@@ -61,6 +92,5 @@ while not salir:
         print("Hasta pronto!")
         salir = True
 
-            
 # Mostrar Menú de opciones
 
