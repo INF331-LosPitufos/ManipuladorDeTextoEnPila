@@ -79,7 +79,7 @@ while not salir:
                     if((i>=0 and i < s.stackSize()) and (j>=0 and j < s.stackSize())):
                         delta = s.compareSizes(i,j)
                         entradaInvalida = False
-                        print(type(s.textInPosition(i)))
+                        #print(type(s.textInPosition(i)))
                         print("La palabra <<"+s.textInPosition(i) + ">> se diferencia de <<"+ s.textInPosition(j)+">> en " + str(delta) + " caracteres\n")
                     else:
                         print("Debes ingresar un número válido!")

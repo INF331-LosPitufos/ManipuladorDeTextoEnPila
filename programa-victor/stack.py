@@ -81,6 +81,5 @@ class Stack:
     def stackSize(self):
         """Funcion retorna el número de objetos en pila"""
         n = len(self.items)
-        logging.info("El numero de objetos en la pila es ",n)
-        print("El numero de objetos en la pila es ",n)
-        return n
+        logging.info("El numero de objetos en la pila es %s",str(n))
+        return int(n)
