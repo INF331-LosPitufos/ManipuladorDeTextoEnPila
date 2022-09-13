@@ -28,11 +28,6 @@ class Vista:
             print(op)
         print(self.saludoOpciones)
 
-    def clear(self):
-        print("Presione enter para volver al menu")
-        input()
-        subprocess.run(["clear"]) 
-
 """
 Que permita almacenar un texto en una pila.
 Que dé al usuario la posibilidad de:

@@ -43,14 +43,14 @@ class Stack:
         """ Retorna el texto más largo de la pila """
         lt = max(self.items, key=len)
         logging.info("El texto mas largo de la pila es %s",lt)
-        print(lt)
+        print(f'El texto mas largo de la pila es {lt}',lt)
         return lt
     
     def smallerText(self):
         """ Retorna el texto más pequeño de la pila """
         st = min(self.items, key=len)
         logging.info("El texto mas largo de la pila es %s",st)
-        print("El texto mas largo de la pila es %s",st)
+        print(f'El texto mas corto de la pila es {st}',st)
         return st
 
     def textInPosition(self, i):

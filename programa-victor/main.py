@@ -17,28 +17,23 @@ while not salir:
 
     if(op=="1"):
         s.printStack()
-        v.clear()
         
     elif(op=="2"):
         print("Escriba el texto a agregar en la pila: ")
         texto = input()
         s.push(texto)
-        v.clear()
 
     elif(op=="3"):
         if(not s.is_empty()):
             s.pop()
-            v.clear()
 
     elif(op=="4"):
         if(not s.is_empty()):
             s.longerText()
-            v.clear()
 
     elif(op=="5"):
         if(not s.is_empty()):
             s.smallerText()
-            v.clear()
 
     elif(op=="6"):
         if(not s.is_empty()):
@@ -56,9 +51,11 @@ while not salir:
                         s.textInPosition(i)
                         entradaInvalida = False
                     else:
-                        print("Debes ingresar un número válido!")
+                        logging.info("Error: Debes ingresar un número válido!")
+                        print("Error: Debes ingresar un número válido!")
                 else:
-                    print("Debes ingresar un número!")
+                    logging.info("Error: Debes ingresar un número!")
+                    print("Error: Debes ingresar un número!")
                 
 
     elif(op=="7"):
@@ -69,8 +66,10 @@ while not salir:
             entradaInvalida = True
             while(entradaInvalida):
                 print("Ingresa la posición del primer texto")
+                logging.info("Opción 7 Ingresa la posición del primer texto")
                 i = input()
                 print("Ingresa la posición del segundo texto")
+                logging.info("Opción 7 Ingresa la posición del segundo texto")
                 j = input()
                 if re.search('^[0-9]+$',i) and re.search('^[0-9]+$',j):
                     i = int(i)
@@ -82,15 +81,22 @@ while not salir:
                         #print(type(s.textInPosition(i)))
                         print("La palabra <<"+s.textInPosition(i) + ">> se diferencia de <<"+ s.textInPosition(j)+">> en " + str(delta) + " caracteres\n")
                     else:
-                        print("Debes ingresar un número válido!")
+                        logging.info("Error: Ambos números deben ser válidos!")
+                        print("Error: Ambos números deben ser válidos!")
                 else:
-                    print("Debes ingresar un números!")
+                    logging.info("Error: Debes ingresar solo números!")
+                    print("Error: Debes ingresar solo números!")
             
     elif(op=="8"):
         print("Presione cualquier tecla para salir")
+        logging.info("Opcion 8 Presione cualquier tecla para salir")
         op = input()
         print("Hasta pronto!")
+        logging.info("Opcion se termina el programa")
         salir = True
 
+    else:
+        print("Error: Opción de menú no válida\n")
+        logging.info("Error: Opción de menú no válida\n")
 # Mostrar Menú de opciones
 
