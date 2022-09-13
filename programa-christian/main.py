@@ -32,6 +32,7 @@ while funcionamiento:
         text_stack.append(texto)
         f.write(f"{datetime.datetime.now().strftime('%H:%M:%S')} Info: Modo {opcion} | Entrada {texto}, Añadido a Pila\n")
 
+
     elif opcion == "2":
         i = 0
         while i < len(text_stack):
