@@ -8,6 +8,9 @@ def comparador(s1, s2):
         return 1
     else:
         return 2
+    
+ def lenght(e):
+    return len(e)
 
 text_stack = []
 funcionamiento = True
@@ -17,7 +20,6 @@ print("- Eliga una opción - \n - 1 - Agregar Texto. \n - 2 - Visualizar Textos.
 print("- En cualquier momento puede usar el comando 'exit()' para retroceder o salir del programa.")
 
 while funcionamiento:
-    #print(datetime.datetime.now().strftime("%H:%M:%S"), end="\r")
 
     opcion = str(input("Ingrese Opción: "))
 
@@ -35,7 +37,7 @@ while funcionamiento:
         while i < len(text_stack):
             print(f"{i} - {text_stack[i]}")
             i += 1
-        f.write(f"{datetime.datetime.now().strftime('%H:%M:%S')} Info: Entrada {opcion} | \n")
+        f.write(f"{datetime.datetime.now().strftime('%H:%M:%S')} Info: Entrada {opcion} | Textos en Pila Visualizados\n")
 
     elif opcion == "3":
         print("-------- Comparar Tamaños--------")
@@ -98,10 +100,10 @@ while funcionamiento:
     elif opcion == "4":
         #Texto más largo y más corto
         if len(text_stack) > 0:
-            print(f"- Texto más largo: {sorted(text_stack)[-1]}")
-            print(f"- Texto más corto: {sorted(text_stack)[0]}")
-            f.write(f"{datetime.datetime.now().strftime('%H:%M:%S')} Info: Modo {opcion} | Resultado: Texto Largo = {text_stack.sort()}\n")
-            f.write(f"{datetime.datetime.now().strftime('%H:%M:%S')} Info: Modo {opcion} | Resultado: Texto Corto = {text_stack.sort()}\n")
+            print(f"- Texto más largo: {sorted(text_stack, key=lenght)[-1]}")
+            print(f"- Texto más corto: {sorted(text_stack, key=lenght)[0]}")
+            f.write(f"{datetime.datetime.now().strftime('%H:%M:%S')} Info: Modo {opcion} | Resultado: Texto Largo = {sorted(text_stack, key=lenght)[-1]}\n")
+            f.write(f"{datetime.datetime.now().strftime('%H:%M:%S')} Info: Modo {opcion} | Resultado: Texto Corto = {sorted(text_stack, key=lenght)[0]}\n")
         else:
             print("- El Stack de Textos está vacío, ingrese textos para poder obtener el texto más largo y el más corto -")
             f.write(f"{datetime.datetime.now().strftime('%H:%M:%S')} Info: Modo {opcion} | Resultado: No hay textos en pila para separar.\n")
