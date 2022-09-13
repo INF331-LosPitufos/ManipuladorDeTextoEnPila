@@ -9,7 +9,7 @@ def comparador(s1, s2):
     else:
         return 2
     
- def lenght(e):
+def lenght(e):
     return len(e)
 
 text_stack = []
